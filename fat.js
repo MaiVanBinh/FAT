@@ -4,6 +4,7 @@ function randomAllocation() {
     return x = Math.round(Math.random());
 } 
 
+// check have any fragment don't have site
 function checkAllEqualZero(arr = []) {
     const findIndex = arr.findIndex(item => item === 1);
     if(findIndex === -1) {

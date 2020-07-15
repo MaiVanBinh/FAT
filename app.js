@@ -1,40 +1,62 @@
 const FatMatrix = require('./fat');
 
 const NUMBER_OF_FAT = 100;
-const NUMBER_OF_EPOCHS = 1000;
+const NUMBER_OF_EPOCHS = 100;
 const MUTATION_PROBABILITY = 0.25;
-const NUMBER_BEST_AGAIN_LIMIT = 20;
+const NUMBER_BEST_AGAIN_LIMIT = 10;
 let fats = [];
 
 const sortFat = (fatsList) => {
+    // sort by score asc
     fatsList.sort((a, b) =>  a['score'] - b['score']);
     return fatsList;
 } 
+// check equal zero
+function checkAllEqualZero(arr = []) {
+    const findIndex = arr.findIndex(item => item === 1);
+    if(findIndex === -1) {
+        return true;
+    }
+    return false;
+}
+const initFat = (fat) => {
+    for(let i = 0; i < 4; i++) {
+        if(checkAllEqualZero(fat[i])) {
+            fat[i][0] = 1;
+        }
+    }
+    return fat;
+}
 
 const app = () => {
-    // Khoi tao Fat
+    // init Fat array
     for(let i = 0; i < NUMBER_OF_FAT; i++) {
         const arr = FatMatrix.randomFat();
         const fatMatrix = new FatMatrix(arr);
         fats.push(fatMatrix);
     }
+
     // sort and pic top of haft
-    fats = sortFat(fats).slice(0,50);
-    // mating
+    fats = sortFat(fats).slice(0,NUMBER_OF_FAT/2);
+
+    // print score of FAT in EPOCHS have min score
     console.log(`EPOCHS${0}: ${fats[0].score}`);
+
     let bestFatScore = fats[0].score;
     let countFatAgain = 0;
+
+    // mating
     loop1:
     for(let epoch = 0; epoch < NUMBER_OF_EPOCHS; epoch++){
-        // mating to 50 FAT for next population
+        // mating to have a haft of population for next population
         for(let i = 0; i < NUMBER_OF_FAT/4; i++) {
             const motherIndex = Math.floor(Math.random()*(NUMBER_OF_FAT/2 - 1));
             const fatherIndex = Math.floor(Math.random()*(NUMBER_OF_FAT/2 - 1));
 
             let [offspring1, offspring2] = fats[motherIndex].mate(fats[fatherIndex]);
 
-            offspring1 = new FatMatrix(offspring1);
-            offspring2 = new FatMatrix(offspring2);
+            offspring1 = new FatMatrix(initFat(offspring1));
+            offspring2 = new FatMatrix(initFat(offspring2));
 
             // Đột biến
             if (Math.random() < MUTATION_PROBABILITY) {
