@@ -1,5 +1,5 @@
-const SIZE_OF_FRAGMENT = [40, 80, 50, 60];
-
+const SOF = [[40, 80, 50, 60]]; //SIZE_OF_FRAGMENT
+const SIZE_OF_FRAGMENT = SOF[0];
 const RM = [
   [2, 0, 3, 2],
   [0, 2, 2, 3],
@@ -40,6 +40,7 @@ const  P_SIZE = 0.1;
 const VCini = 5;
 const SI = 1;
 
+const matrixType = [SOF, RM, UM, FREQ, SEL, CTR];
 
 const calculateCommunicationCost = (sideId1, sideId2, m_size) => {
     return Cini*(m_size /P_SIZE) + CTR[sideId1][sideId2]*m_size;
@@ -114,8 +115,13 @@ const calculatorCCproc = () => {
   return CCproc;
 }
 
-exports.evaluteFAT = function(cFAT){
-    FAT = cFAT
-    let score = calculatorCCload() + calculatorCCproc();
-    return score;
+const evaluteFAT = function(cFAT){
+  FAT = cFAT
+  let score = calculatorCCload() + calculatorCCproc();
+  return score;
 }
+// exports.evaluteFAT = function(cFAT){
+//     FAT = cFAT
+//     let score = calculatorCCload() + calculatorCCproc();
+//     return score;
+// }

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./init.js"></script>
+    <style>
+        button {
+            padding: 10px 10px;
+            background-color: aqua;
+            font-weight: bold;
+            border: none;
+            outline: none;
+        }
+        button:hover{
+            background-color: blue;
+        }
+        td, th {
+            width: 4rem;
+            height: 2rem;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background: lightblue;
+            border-color: white;
+        }
+        body {
+            padding: 1rem;  
+        }
+        .container {
+            width: 100%;
+        }
+        .init {
+            width: 30%;
+            text-align: center;
+            float: left;
+        }
+        .result {
+            float: right;
+            width: 60%;
+        }
+        .result div {
+            margin: 10px 0;
+        }
+        .footer{
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="init">
+            <div id="SOF​"></div>
+            <div id="RM"></div>
+            <div id="UM"></div>
+            <div id="FREQ"></div>
+            <div id="SEL"></div>
+            <div id="CTR"></div>
+            <br>
+            <div style="margin-bottom: 50px;">Cini = 5 , p_size = 100k byte,   SI=2,VCini = 5​</div>
+        </div>
+        <div class="result">
+            <h1 style="text-align: center;">Result</h1>
+            <div>
+                <label for="NUMBER_OF_FAT">NUMBER OF FATS</label>
+                <input type="number" id="NUMBER_OF_FAT" name="NUMBER_OF_FAT" value="100">
+            </div>
+            <div>
+                <label for="NUMBER_OF_EPOCHS">NUMBER OF EPOCHS</label>
+                <input type="number" id="NUMBER_OF_EPOCHS" name="NUMBER_OF_EPOCHS" value="100">
+            </div>
+            <div>
+                <label for="MUTATION_PROBABILITY">MUTATION PROBABILITY</label>
+                <input type="number" id="MUTATION_PROBABILITY" name="MUTATION_PROBABILITY" value="0.1">
+            </div>
+            <div>
+                <label for="NUMBER_BEST_AGAIN_LIMIT">Số lần lặp lại của một kết quả tốt nhất để dừng chương trình:</label>
+                <input type="number" id="NUMBER_BEST_AGAIN_LIMIT" name="NUMBER_BEST_AGAIN_LIMIT" value="10">
+            </div>
+            <div style="text-align: center;">
+                <button onclick="app();">Show result</button>
+            </div>
+            <div id="result"></div>
+            <div id="FAT"></div>
+        </div>
+    </div>
+    <script src="./fat.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-const { evaluteFAT  } = require('./init');
+// const { evaluteFAT  } = require('./init');
 
 function randomAllocation() {
     return x = Math.round(Math.random());
@@ -30,6 +30,7 @@ class FatMatrix {
             for(let j = 0; j < sites; j++) {
                 arr.push(randomAllocation());
             }
+            // Check to comfirm each fragment is in at least one site
             if(checkAllEqualZero(arr)) {
                 // random from 0 to 3
                 const randomNumber = Math.floor(Math.random()*4);
@@ -73,4 +74,4 @@ class FatMatrix {
     }
 }
 
-module.exports = FatMatrix;
+// module.exports = FatMatrix;
